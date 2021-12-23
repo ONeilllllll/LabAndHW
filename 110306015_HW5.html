@@ -11,12 +11,13 @@
 			background-color: lightcyan;
 			font-family:monospace;
 			font-size: 20px;
+			font-weight: bolder;
 			position: relative;
 			width: 40%;
 			left: 30%;
 			right: 30%;
 			text-align: center;
-
+			border-style: outset;
 		}
 
 		.playButton
@@ -59,7 +60,7 @@
 		{
 			if (num == rand) 
 			{
-				alert('Boom!');
+				alert('U got da right one');
 			}
 
 			else if (num < rand && num >= lowerLimit) 
@@ -82,7 +83,6 @@
 				let newText = document.createTextNode(result);
 				newCell.appendChild(newText);
 				upperLimit = num;
-
 			}
 		}
 		
