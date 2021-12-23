@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		.background
+		{
+			font-family: monospace;
+			font-size: 20px;
+			position: relative;
+			background-color: lightpink;
+			border-style: outset;
+			width: 30%;
+			left: 35%;
+			right: 35%;
+			text-align: center;
+		}
+		input[type=button]
+		{
+		  	background-color: #f44336;
+		  	border: none;			  
+		  	color: white;
+			padding: 10px 90px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+		
+	</style>
+
+	
+</head>
+<body>
+	<form action="#" class="background">
+		<script type="text/javascript">
+		</script>
+		<h1>JS Calculator</h1><br>
+			<p>Number 1<br>
+				<input type="number" id="num1" name="number1">
+			</p>
+			<p>Number 2<br>
+				<input type="number" id="num2" name="number2">
+			</p>
+			<p>Operate way?<br>
+				<label for="operator"></label>
+				<select id="operator" name="operator">
+					<option value="+">+</option>
+					<option value="-">-</option>
+					<option value="*">*</option>
+					<option value="/">/</option>
+				</select>
+			</p>
+			<a><input type="button" name="run" value="run" id="run" onclick="
+			cal(parseFloat(document.getElementById('num1').value),parseFloat(document.getElementById('num2').value),String(document.getElementById('operator').value))"></a><br>
+			<script type="text/javascript">
+		
+		
+			function cal(num1,num2,operateWay)
+			{
+				if(operateWay == "+") 
+				{
+					add(num1,num2);
+				}
+				else if(operateWay == "-")
+				{
+					substract(num1,num2);
+				}
+				else if (operateWay == "*") 
+				{
+					multiply(num1,num2);
+				}
+				else if (operateWay == "/") 
+				{
+					divide(num1,num2);
+				}
+			}
+			function add(num1,num2) 
+			{
+				var result = num1 + num2;
+				var output = "result = " + result;
+				document.getElementById("mySpan").innerHTML = output;
+			}
+			function substract(num1,num2) 
+			{
+				var result = num1 - num2;
+				var output = "result = " + result;
+				document.getElementById("mySpan").innerHTML = output;
+			}
+			function multiply(num1,num2) 
+			{
+				var result = num1 * num2;
+				var output = "result = " + result;
+				document.getElementById("mySpan").innerHTML = output;
+			}
+			function divide(num1,num2) 
+			{
+				var result = num1 / num2;
+				var output = "result = " + result;
+				document.getElementById("mySpan").innerHTML = output;
+			}
+		</script>
+			<span id="mySpan">result =</span>
+	</form>
+
+	
+</body>
+</html>

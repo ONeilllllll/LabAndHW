@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		#Table
+		{
+			background-color: lightcyan;
+			font-family:monospace;
+			font-size: 20px;
+			position: relative;
+			width: 40%;
+			left: 30%;
+			right: 30%;
+			text-align: center;
+
+		}
+
+		.playButton
+		{
+			background-color: lightblue;
+			width: 170px;
+		}
+
+		input.playButton:hover
+		{
+			background-color: yellow;
+		}
+
+	</style>
+
+</head>
+<body>
+	<script type="text/javascript">
+		var rand = Math.floor((Math.random()*100)+1);
+	</script>
+	<form>
+	<table id="Table">
+	<tr>
+		<td>
+			<h2><strong>Guessing Game</strong></h2><br>
+			Your guess (1 ~ 100)<br>
+			<input type="number" name="input" id="input"><br>
+			<input type="button" name="play" class="playButton" value="Play" onclick="startPlaying(document.getElementById('input').value)">
+			<br><br>
+			<strong>Result</strong><br>
+		</td>
+	</tr>
+	</table>
+	</form>
+
+	<script type="text/javascript">
+		var lowerLimit = 1;
+		var upperLimit = 100;
+		function startPlaying(num) 
+		{
+			if (num == rand) 
+			{
+				alert('Boom!');
+			}
+
+			else if (num < rand && num >= lowerLimit) 
+			{
+				let table = document.getElementById('Table');
+				let newRow = table.insertRow(-1);
+				let newCell = newRow.insertCell(0);
+				let result = num + " ~ " + upperLimit;
+				let newText = document.createTextNode(result);
+				newCell.appendChild(newText);
+				lowerLimit = num;
+			}
+
+			else if(num > rand && num <= upperLimit)
+			{
+				let table = document.getElementById('Table');
+				let newRow = table.insertRow(-1);
+				let newCell = newRow.insertCell(0);
+				let result = lowerLimit + " ~ " + num;
+				let newText = document.createTextNode(result);
+				newCell.appendChild(newText);
+				upperLimit = num;
+
+			}
+		}
+		
+	</script>
+	
+</body>
+</html>
