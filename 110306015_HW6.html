@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		#myTable
+		{
+			font-family: monospace;
+			font-size: 20px;
+			border-style: outset;
+		}
+		input[type=button]
+		{
+		  	background-color: orangered;
+		  	border: none;			  
+		  	color: white;
+			padding: 10px 118px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+		input[type=button]:hover
+		{
+			background-color: deeppink;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		<img src="die1.png" id="die1" alt="die 1 image">
+		<img src="die1.png" id="die2" alt="die 2 image">
+		<img src="die1.png" id="die3" alt="die 3 image">
+		<img src="die1.png" id="die4" alt="die 4 image">
+		<img src="die1.png" id="die5" alt="die 5 image">
+		<img src="die1.png" id="die6" alt="die 6 image">
+	</p>
+	<p>
+		<img src="die1.png" id="die7" alt="die 7 image">
+		<img src="die1.png" id="die8" alt="die 8 image">
+		<img src="die1.png" id="die9" alt="die 9 image">
+		<img src="die1.png" id="die10" alt="die 10 image">
+		<img src="die1.png" id="die11" alt="die 11 image">
+		<img src="die1.png" id="die12" alt="die 12 image">
+	</p>
+
+	<form action="#">
+		<input type="button" id="rollButton" value="Roll Dice" onclick="rollDice()">
+
+		<table id="myTable" style="border:3px #cccccc solid;" cellpadding="10" border=‘1’>
+			<tr>
+				<th>Face</th> <th>Frequency</th> <th>Percent</th>
+			</tr>
+			<tr>
+				<td>1</td> <td id="f1">0</td> <td id="p1">0%</td>
+			</tr>
+			<tr>
+				<td>2</td> <td id="f2">0</td> <td id="p2">0%</td>
+			</tr>
+			<tr>
+				<td>3</td> <td id="f3">0</td> <td id="p3">0%</td>
+			</tr>
+			<tr>
+				<td>4</td> <td id="f4">0</td> <td id="p4">0%</td>
+			</tr>
+			<tr>
+				<td>5</td> <td id="f5">0</td> <td id="p5">0%</td>
+			</tr>
+			<tr>
+				<td>6</td> <td id="f6">0</td> <td id="p6">0%</td>
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+		var totalDice = 0;
+		var frequency1 = 0;
+		var frequency2 = 0;
+		var frequency3 = 0;
+		var frequency4 = 0;
+		var frequency5 = 0;
+		var frequency6 = 0;
+		function rollDice() 
+		{
+			var face;
+			for (var i = 1; i <= 12 ; i++) 
+			{
+				face = Math.floor( Math.random()*6 + 1 );
+				setImage( i, face );
+				tallyRolls( face );
+				totalDice++;
+			}
+			updateFrequencyTable();
+		}
+	
+		function setImage( dieNumber, face ) 
+		{
+			document.getElementById("die" + dieNumber).setAttribute("src", "die" + face + ".png");
+			document.getElementById("die" + dieNumber).setAttribute("alt", "die image with " + face);
+		}
+		function tallyRolls( face ) 
+		{
+			switch( face )
+			{
+				case 1:
+				frequency1++;
+				break;
+
+				case 2:
+				frequency2++;
+				break;
+
+				case 3:
+				frequency3++;
+				break;
+
+				case 4:
+				frequency4++;
+				break;
+
+				case 5:
+				frequency5++;
+				break;
+
+				case 6:
+				frequency6++;
+				break;
+			}
+		}
+		function updateFrequencyTable() 
+		{
+			document.getElementById('f1').innerHTML = frequency1;
+			document.getElementById('f2').innerHTML = frequency2;
+			document.getElementById('f3').innerHTML = frequency3;
+			document.getElementById('f4').innerHTML = frequency4;
+			document.getElementById('f5').innerHTML = frequency5;
+			document.getElementById('f6').innerHTML = frequency6;
+
+			document.getElementById('p1').innerHTML = Math.floor((frequency1 / totalDice) * 100) + "%";
+			document.getElementById('p2').innerHTML = Math.floor((frequency2 / totalDice) * 100) + "%";
+			document.getElementById('p3').innerHTML = Math.floor((frequency3 / totalDice) * 100) + "%";
+			document.getElementById('p4').innerHTML = Math.floor((frequency4 / totalDice) * 100) + "%";
+			document.getElementById('p5').innerHTML = Math.floor((frequency5 / totalDice) * 100) + "%";
+			document.getElementById('p6').innerHTML = Math.floor((frequency6 / totalDice) * 100) + "%";
+		}
+	</script>
+
+</body>
+</html>
